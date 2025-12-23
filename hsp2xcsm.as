@@ -56,8 +56,8 @@ __gcsm_commerenabled=1
 //translating user var
 repeat __gcsm_instcnt-1
 if (__gcsm_instattr(0,cnt+1)&0xFFF)=0 & __gcsm_instattr(1,cnt+1)='('{__gcsm_commerenabled--}
-if (__gcsm_instattr(0,cnt+1)&0xFFF)=0 & __gcsm_instattr(1,cnt+1)=')'{__gcsm_commerenabled++}
 if cnt>=1 & __gcsm_commerenabled=1{__gcsm_comma=cnt+1:break}
+if (__gcsm_instattr(0,cnt+1)&0xFFF)=0 & __gcsm_instattr(1,cnt+1)=')'{__gcsm_commerenabled++}
 if cnt=0{
 wpoke __gcsm_bytecodebuffer,__gcsm_instcnt2,(__gcsm_instattr(0,cnt+1)&(0xFFFF-0x4000))|0x2000
 }else{
@@ -96,8 +96,8 @@ __gcsm_commerenabled=1
 //translating user func
 repeat __gcsm_instcnt-__gcsm_comma
 if (__gcsm_instattr(0,cnt+__gcsm_comma)&0xFFF)=0 & __gcsm_instattr(1,cnt+__gcsm_comma)='('{__gcsm_commerenabled--}
-if (__gcsm_instattr(0,cnt+__gcsm_comma)&0xFFF)=0 & __gcsm_instattr(1,cnt+__gcsm_comma)=')'{__gcsm_commerenabled++}
 if cnt>=1 & ((__gcsm_instattr(0,cnt+__gcsm_comma)&0x4000)=0 & (__gcsm_instattr(0,cnt+__gcsm_comma+1)&0x4000)=0) & __gcsm_commerenabled=1{__gcsm_finnish=cnt+__gcsm_comma:break}
+if (__gcsm_instattr(0,cnt+__gcsm_comma)&0xFFF)=0 & __gcsm_instattr(1,cnt+__gcsm_comma)=')'{__gcsm_commerenabled++}
 if cnt=0{
 wpoke __gcsm_bytecodebuffer,__gcsm_instcnt2,(__gcsm_instattr(0,cnt+__gcsm_comma)&(0xFFFF-0x1000-0x4000))
 }else{
